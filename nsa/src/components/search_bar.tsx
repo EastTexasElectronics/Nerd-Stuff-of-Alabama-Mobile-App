@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, TextInput, FlatList, Text, Image, ActivityIndicator, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Animated } from 'react-native';
+import { View, TextInput, FlatList, Text, Image, ActivityIndicator, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { searchShopify } from '../services/shopify_queries';
 
@@ -9,10 +9,8 @@ const SearchBar = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [noResults, setNoResults] = useState(false);
-  const [focused, setFocused] = useState(false);
 
   const textInputRef = useRef(null);
-  const heightAnim = useRef(new Animated.Value(5)).current;
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -58,32 +56,6 @@ const SearchBar = () => {
     setResults([]);
     setNoResults(false);
     Keyboard.dismiss();
-    setFocused(false);
-    Animated.timing(heightAnim, {
-      toValue: 5,
-      duration: 300,
-      useNativeDriver: false,
-    }).start();
-  };
-
-  const handleFocus = () => {
-    setFocused(true);
-    Animated.timing(heightAnim, {
-      toValue: 10,
-      duration: 300,
-      useNativeDriver: false,
-    }).start();
-  };
-
-  const handleBlur = () => {
-    if (searchQuery.length === 0) {
-      setFocused(false);
-      Animated.timing(heightAnim, {
-        toValue: 5,
-        duration: 300,
-        useNativeDriver: false,
-      }).start();
-    }
   };
 
   const truncateTitle = (title: string, maxLength: number) => {
@@ -93,11 +65,7 @@ const SearchBar = () => {
   return (
     <TouchableWithoutFeedback onPress={handleOutsideClick}>
       <View className="relative flex flex-col mx-4 mt-4">
-        <Animated.View style={{ height: heightAnim.interpolate({
-            inputRange: [5, 10],
-            outputRange: [40, 80]
-          })
-        }} className="flex flex-row items-center p-4 bg-gray-200 rounded-md relative">
+        <View className="flex flex-row items-center p-4 bg-gray-200 rounded-md relative">
           <MaterialCommunityIcons
             name="store-search"
             size={24}
@@ -108,15 +76,9 @@ const SearchBar = () => {
             ref={textInputRef}
             value={searchQuery}
             onChangeText={handleSearch}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            placeholder={focused ? '' : 'Search products...'}
+            placeholder="Search products..."
             placeholderTextColor="#000"
-            className="flex-1 pl-10 pr-4 py-2 text-black bg-gray-200 rounded-md"
-            style={{ height: heightAnim.interpolate({
-              inputRange: [5, 10],
-              outputRange: [40, 80]
-            })}}
+            className="flex-1 pl-10 pr-4 py-2 text-black bg-gray-200 rounded-md h-5"
           />
           {loading ? (
             <ActivityIndicator
@@ -131,19 +93,11 @@ const SearchBar = () => {
               </TouchableOpacity>
             )
           )}
-        </Animated.View>
-        {error && (
-          <View className="mt-2 flex flex-row justify-center items-center">
-            <Text className="text-red-500 mr-2">{error}</Text>
-            <TouchableOpacity onPress={() => handleSearch(searchQuery)}>
-              <Text className="text-blue-500">Retry</Text>
-            </TouchableOpacity>
-          </View>
-        )}
+        </View>
+        {error && <Text className="text-red-500 mt-2">{error}</Text>}
         {noResults && !loading && searchQuery.length > 0 && (
-          <View className="mt-2 flex flex-row justify-center items-center">
-            <MaterialCommunityIcons name="magnify-close" size={24} color="gray" />
-            <Text className="text-gray-500 ml-2">No results found.</Text>
+          <View className="absolute top-16 left-0 right-0 px-4 items-center">
+            <Text className="text-gray-500">No results found.</Text>
           </View>
         )}
         {searchQuery.length > 0 && (
