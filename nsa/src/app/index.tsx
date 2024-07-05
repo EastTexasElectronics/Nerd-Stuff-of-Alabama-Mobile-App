@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { Entypo } from '@expo/vector-icons';
-// import ProductGrid from '../components/product_grid';
 import SearchBar from '../components/search_bar';
 
 // Keep the splash screen visible while we fetch resources
@@ -46,17 +45,10 @@ export default function App() {
 
   return (
     <SafeAreaView style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <ScrollView>
+      <View className="bg-white dark:bg-slate-800">
         <SearchBar />
-        {/* <View className="p-4 my-4 mx-4 rounded-md">
-          <Text>List of Collections</Text>
-        </View>
-        <View className="p-4 my-4 mx-4 rounded-md">
-          <Text>Promo Banner</Text>
-        </View> */}
-        {/* <View className="p-4 my-4 mx-4 rounded-md">
-          <ProductGrid />
-        </View> */}
+      </View>
+      <ScrollView className="bg-white dark:bg-slate-800">
       </ScrollView>
     </SafeAreaView>
   );

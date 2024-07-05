@@ -20,10 +20,16 @@
     ],
     "splash": {
       "image": "./src/assets/images/Nerd_Stuff_Splash.png",
-      "resizeMode": "contain"
+      "resizeMode": "contain",
+      "backgroundColor": "#1D434E"
     },
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/images/favicon.png"
+      }
     },
     "assetBundlePatterns": ["**/*"]
   }
