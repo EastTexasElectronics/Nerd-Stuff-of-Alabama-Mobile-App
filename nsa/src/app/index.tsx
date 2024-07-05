@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
@@ -44,7 +44,7 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+    <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
       <View className="bg-white dark:bg-slate-800">
         <SearchBar />
       </View>
@@ -53,3 +53,14 @@ export default function App() {
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#708090',
+  },
+  text: {
+    fontSize: 25,
+    fontWeight: '500',
+  },
+});
