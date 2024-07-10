@@ -1,5 +1,4 @@
 // shopify_queries.ts
-
 import client from "./shopify_client";
 
 // GET_PRODUCTS_QUERY
@@ -38,7 +37,7 @@ const GET_PRODUCTS_QUERY = `
 export const fetchProducts = async () => {
   try {
     const response = await client.request(GET_PRODUCTS_QUERY);
-    console.log("Response from Shopify:", JSON.stringify(response, null, 2)); // Detailed logging
+    // console.log("Response from Shopify:", JSON.stringify(response, null, 2)); // Detailed logging
 
     if (response.data && response.data.products) {
       return response.data.products.edges;
@@ -101,10 +100,10 @@ export const searchShopify = async (query: string) => {
     const response = await client.request(SEARCH_QUERY, {
       variables: { query },
     });
-    console.log(
-      "Search response from Shopify:",
-      JSON.stringify(response, null, 2)
-    ); // Detailed logging
+    // console.log(
+    //   "Search response from Shopify:",
+    //   JSON.stringify(response, null, 2)
+    // ); // Detailed logging
 
     if (response.data) {
       return {
@@ -145,6 +144,7 @@ const GET_COLLECTION_PRODUCTS_QUERY = `
                     amount
                     currencyCode
                   }
+                  availableForSale
                 }
               }
             }
@@ -172,7 +172,7 @@ export const fetchCollectionProducts = async (
     const response = await client.request(GET_COLLECTION_PRODUCTS_QUERY, {
       variables: { collectionId, first, after, before },
     });
-    console.log("Response from Shopify:", JSON.stringify(response, null, 2)); // Detailed logging
+    // console.log("Response from Shopify:", JSON.stringify(response, null, 2)); // Detailed logging
 
     if (response.data && response.data.collection) {
       return response.data.collection.products;

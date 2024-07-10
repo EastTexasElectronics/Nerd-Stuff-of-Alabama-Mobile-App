@@ -1,0 +1,1 @@
+I dont know why buy nativewind does not like some expo tags such as expo-image

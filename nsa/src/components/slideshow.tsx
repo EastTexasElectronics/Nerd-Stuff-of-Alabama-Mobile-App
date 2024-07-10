@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, FlatList, TouchableOpacity, Dimensions, Text, ActivityIndicator, Linking, Alert, NativeScrollEvent } from 'react-native';
+import { View, FlatList, TouchableOpacity, Dimensions, Text, Linking, Alert, NativeScrollEvent } from 'react-native';
 import { Image } from 'expo-image';
 
 const { width } = Dimensions.get('window');
-const blurhash = '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+const blurhash = 'L6Pj0^jE.AyE_3t7t7R**0o#DgR4';
 
 /**
  * Slideshow Component
@@ -82,6 +82,7 @@ const Slideshow = () => {
    * Render an individual slideshow item
    * 
    * @param item - The image object containing URL and link
+   * 
    */
   const renderItem = ({ item }: { item: { url: string; link: string } }) => (
     <TouchableOpacity onPress={() => handleImagePress(item.link)} accessible={true} accessibilityLabel="Navigate to link">
@@ -94,14 +95,6 @@ const Slideshow = () => {
       />
     </TouchableOpacity>
   );
-
-  if (isLoading) {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
-    );
-  }
 
   return (
     <View className="h-50 w-full bg-gray-200">

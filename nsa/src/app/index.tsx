@@ -1,5 +1,3 @@
-// src/app/index.tsx
-
 import 'react-native-gesture-handler'; // Make sure this is at the top of your entry file
 import React, { useCallback, useEffect, useState } from 'react';
 import { View, StyleSheet, useColorScheme } from 'react-native';
@@ -63,7 +61,7 @@ export default function App() {
         <View className="bg-white dark:bg-slate-800">
           <SearchBar />
         </View>
-        <View className="bg-white dark:bg-slate-800">
+        <View className="bg-white dark:bg-slate-800 flex-1">
           <PromotedCollectionList />
           <Slideshow />
           <PreOrderGrid />
