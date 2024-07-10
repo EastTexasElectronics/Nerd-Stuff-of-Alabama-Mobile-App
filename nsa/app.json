@@ -1,15 +1,14 @@
 {
   "expo": {
-    "name": "nsa",
-    "slug": "nsa",
-    "version": "1.0.0",
+    "name": "Nerd Stuff of Alabama",
+    "slug": "NSA",
+    "owner": "Nerd Stuff of Alabama LLC.",
+    "privacy": "public",
+    "version": "0.0.1",
     "orientation": "default",
-    "userInterfaceStyle": "automatic",
-    "scheme": "acme",
-    "web": {
-      "output": "static",
-      "bundler": "metro"
-    },
+    "scheme": "nsa",
+    "primaryColor": "#7f1d1d",
+    "githubUrl": "https://github.com/Nerd-Stuff-of-Alabama/nsa",
     "plugins": [
       [
         "expo-router",
@@ -21,16 +20,32 @@
     "splash": {
       "image": "./src/assets/images/Nerd_Stuff_Splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#1D434E"
+      "backgroundColor": "#7f1d1d"
     },
+    "platforms": ["ios", "android", "web"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "icon": "./src/assets/images/favicon.png",
+
+      "associatedDomains": ["applinks:alnerdstuff.com"],
+      "usesAppleSignIn": true,
+      "userInterfaceStyle": "automatic",
+      "bundleIdentifier": "com.nerd-stuff-of-alabama.nsa",
+      "iosDisplayInForeground": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/favicon.png"
-      }
+      },
+      "icon": "./src/assets/images/favicon.png"
     },
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": ["**/*"],
+    "versionCode": 1,
+    "appStoreUrl": "https://apps.apple.com/us/app/nerd-stuff-of-alabama/id1620268600",
+    "permissions": [
+      "android.permission.INTERNET",
+      "android.permission.ACCESS_NETWORK_STATE"
+    ],
+    "userInterfaceStyle": "automatic"
   }
 }

@@ -1,6 +1,7 @@
+// src/components/product_grid.tsx
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, ActivityIndicator, StyleSheet } from 'react-native';
-import { fetchProducts } from '../services/shopify_queries';
+import { fetchProducts } from '@/services/shopify_queries';
 
 const ProductGrid = () => {
   const [products, setProducts] = useState([]);
