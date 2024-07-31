@@ -1,4 +1,4 @@
-// src/components/preorder_grid.tsx
+// src/components/PreOrderGrid.tsx
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { View, Text, FlatList, TouchableOpacity, useColorScheme } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
@@ -10,9 +10,9 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import Product from '@/data/types';
 
-const COLLECTION_ID = 'gid://shopify/Collection/477286105364'; //Pre-Orders collection ID
-const ITEMS_PER_PAGE = 10; //Number of products per page
-const blurhash = 'LEHV6nWB2yk8pyo0adR*.7kCMdnj'; //Blurhash for loading images
+const COLLECTION_ID = 'gid://shopify/Collection/477286105364'; // Pre-Orders collection ID
+const ITEMS_PER_PAGE = 10; // Number of products per page
+const blurhash = 'LEHV6nWB2yk8pyo0adR*.7kCMdnj'; // Blurhash for loading images
 
 const PreOrderGrid = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -190,7 +190,7 @@ const PreOrderGrid = () => {
         {item.title.length > 35 ? `${item.title.substring(0, 35)}...` : item.title}
       </Text>
     </TouchableOpacity>
-  ), []);
+  ), [router]);
 
   return (
     <View className="relative bg-white dark:bg-slate-800 flex-1 border border-gray-300 dark:border-gray-600 rounded-lg">
