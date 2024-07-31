@@ -1,3 +1,4 @@
+// src/data/types.d.ts
 export type Collection = {
   key: string;
   name: string;

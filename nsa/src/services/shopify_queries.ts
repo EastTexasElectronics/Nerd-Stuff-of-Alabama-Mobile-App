@@ -1,4 +1,4 @@
-// shopify_queries.ts
+// src/services/shopify_queries.ts
 import client from "./shopify_client";
 
 // GET_PRODUCTS_QUERY
@@ -172,11 +172,18 @@ export const fetchCollectionProducts = async (
     const response = await client.request(GET_COLLECTION_PRODUCTS_QUERY, {
       variables: { collectionId, first, after, before },
     });
-    // console.log("Response from Shopify:", JSON.stringify(response, null, 2)); // Detailed logging
+    
+    console.log("Response from Shopify:", JSON.stringify(response, null, 2));
+    
+    if (response.errors) {
+      console.error("GraphQL errors:", response.errors);
+      throw new Error("GraphQL errors occurred");
+    }
 
-    if (response.data && response.data.collection) {
+    if (response.data && response.data.collection && response.data.collection.products) {
       return response.data.collection.products;
     } else {
+      console.error("Invalid response structure", response);
       throw new Error("Invalid response structure");
     }
   } catch (error) {

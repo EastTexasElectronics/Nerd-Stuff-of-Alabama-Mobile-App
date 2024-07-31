@@ -1,6 +1,6 @@
-/// <reference types="nativewind/types" />
-
 // src/data/file_type_declarations.d.ts
+
+/// <reference types="nativewind/types" />
 
 // Image formats
 declare module '*.png' {

@@ -1,7 +1,13 @@
-import React from "react";
+// src/app/_layout.tsx
+import React from 'react';
+import { Stack } from 'expo-router';
 import "../global.css";
-import { Slot } from "expo-router";
 
 export default function Layout() {
-  return <Slot />;
+  return (
+    <Stack>
+      <Stack.Screen name="index" options={{ title: 'Home' }} />
+      <Stack.Screen name="pages/ProductPage" options={{ title: 'Product Details' }} />
+    </Stack>
+  );
 }
